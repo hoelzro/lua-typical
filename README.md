@@ -19,5 +19,5 @@ print(type(object)) -- prints 'object'
 
 Typical is *very* simple: it looks for a `__type` metafield on an object.
 If it's a function, it passes the value to the function and uses the result
-as the type name.  If it's a string, it uses that.  If `__type` is nil
-or returns nil, the builtin `type` is used.
+as the type name.  If it's a string, it uses that.  If `__type` is `nil`
+or returns `nil`, the builtin `type` is used.
