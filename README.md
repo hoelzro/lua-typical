@@ -21,3 +21,31 @@ Typical is *very* simple: it looks for a `__type` metafield on an object.
 If it's a function, it passes the value to the function and uses the result
 as the type name.  If it's a string, it uses that.  If `__type` is `nil`
 or returns `nil`, the builtin `type` is used.
+
+# Library Overview
+
+If you want to use typical just like a function, you can:
+
+```lua
+local type = require 'typical'
+```
+
+However, the type object is just an alias for `typical.type`:
+
+```lua
+local typical = require 'typical'
+print(typical.type(value)) -- same as typical(value)
+```
+
+Typical also provides other type-related methods for your convenience;
+you can read about them in the 'Methods' section.
+
+# Methods
+
+## typical.type(value)
+
+Returns the type name for a value.
+
+## typical.iscallable(value)
+
+Returns true if the given value may be called like a function.
