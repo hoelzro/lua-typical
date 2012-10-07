@@ -38,6 +38,16 @@ function typical.type(value)
   return rawtype(value)
 end
 
+function typical.iscallable(value)
+  if rawtype(value) == 'function' then
+    return true
+  end
+
+  local value_mt = getmetatable(value)
+
+  return value_mt and value_mt.__call
+end
+
 function mt:__call(...)
   return self.type(...)
 end
