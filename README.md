@@ -9,7 +9,15 @@ local object = setmetatable({}, { __type = 'object' })
 print(type(object)) -- prints 'table'
 ```
 
-Typical is a library that offers an enhanced version of `type`:
+Some libraries (such as the I/O library included with standard Lua) offer alternative
+type functions for identifying types used within that library:
+
+```lua
+print(io.type(value) or type(value))
+```
+
+Typical is a library that offers an enhanced version of `type` that is meant to be
+more generic:
 
 ```lua
 local type = require 'typical'
