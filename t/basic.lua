@@ -3,7 +3,7 @@ local typical = require 'typical'
 pcall(require, 'Test.More')
 require 'Test.More'
 
-plan(10)
+plan(11)
 
 do -- basic values (should behave like type() )
   is(typical(nil), 'nil')
@@ -19,6 +19,10 @@ do -- basic values (should behave like type() )
   else
     skip 'newproxy is needed for testing userdata'
   end
+end
+
+do -- io.type stuff works
+  is(typical(io.stdin), 'file')
 end
 
 do -- __type metafield
