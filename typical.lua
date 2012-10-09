@@ -20,7 +20,7 @@ local mt      = {}
 local typical = setmetatable({}, mt)
 local rawtype = type
 
-function typical.type(value)
+local function metatype(value)
   local value_mt = getmetatable(value)
 
   if value_mt then
@@ -34,8 +34,21 @@ function typical.type(value)
       return metatype
     end
   end
+end
 
-  return rawtype(value)
+local resolvers = {
+  metatype,
+  io.type,
+  rawtype,
+}
+
+function typical.type(value)
+  for _, resolver in ipairs(resolvers) do
+    local type = resolver(value)
+    if type then
+      return type
+    end
+  end
 end
 
 function typical.iscallable(value)
