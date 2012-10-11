@@ -53,7 +53,3 @@ you can read about them in the 'Methods' section.
 ## typical.type(value)
 
 Returns the type name for a value.
-
-## typical.iscallable(value)
-
-Returns true if the given value may be called like a function.
